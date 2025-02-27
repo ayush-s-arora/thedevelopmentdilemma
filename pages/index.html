@@ -4,11 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="../style.css">
-    <script type="module" src="../src/main.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <script type="module" src="/src/main.js"></script>
+    <script src="/node_modules/particles.js/particles.js"></script>
 </head>
 <body>
-    <h1>The Development Dilemma</h1>
-    <h2>🤔</h2>
+    <div id="particles-js"></div>
+    <div transition-style="in:wipe:up">
+    <name>
+        <h1>The Development Dilemma
+        <span class="emoji">
+            <br><a href="/pages/development">🤔</a>
+        </span>
+    </h1>
+    </name>
+    <div id="footer"></div>
+    <script>
+        fetch('/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+    </script>
 </body>
 </html>

@@ -10,6 +10,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "gsap": "^3.12.7"
+    "gsap": "^3.12.7",
+    "particles.js": "^2.0.0",
+    "transition-style": "^0.1.3"
   }
 }

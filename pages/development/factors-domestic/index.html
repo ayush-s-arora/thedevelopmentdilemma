@@ -1,4 +1,21 @@
-<h1>Domestic Factors Affecting Development 🏠</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development</title>
+    <link rel="stylesheet" href="/style.css">
+    <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+    <header></header>
+    <div transition-style="in:wipe:up">
+        <info>
+        <div>
+            <h1>Domestic Factors Affecting Development 🏠</h1>
+            </div>
+            <div>
+            <content>
 
 <br>What domestic factors—circumstances within a nation—impact its development?
 
@@ -23,4 +40,18 @@
     <li>Government Policies</li>
     Government policies play a role in development, too!<br>More specifically, policies that support <b>infrastructure</b>, or the basic structures necessary for social activity, such as transportation and telecommunications networks, and power and water supply, tend to help bolster development.<br>Countries that have a reliable and dependable set of laws (<b>rule of law</b>) and punishments also tend to be more develpoed, as the citizens gain a sense of protection from issues such as predatory business practices, furthering social and economic progress.<br>A country's regime type also may yield wealth differences. For instance, a democracy's emphases on fairness and accountability may also further progress, supporting development.
 </ol>
+</content>
+</div>
 <a href="/pages/development">Back</a>
+</info>
+</div>
+</body>
+<div id="footer"></div>
+<script>
+    fetch('/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+</script>
+</html>

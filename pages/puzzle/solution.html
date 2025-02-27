@@ -1,4 +1,13 @@
-<link rel="stylesheet" href="/style.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development</title>
+    <link rel="stylesheet" href="/style.css">
+    <script type="module" src="/src/main.js"></script>
+</head>
+<header></header>
 
 We set out on this journey to solve the puzzle:
 
@@ -17,3 +26,11 @@ We set out on this journey to solve the puzzle:
 <a href="/pages/">Home</a>
 
 <script src="/src/main.js"></script>
+<div id="footer"></div>
+<script>
+    fetch('/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+</script>

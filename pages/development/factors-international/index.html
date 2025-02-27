@@ -1,5 +1,21 @@
-<h1>International Factors Affecting Development 🌎</h1>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development</title>
+    <link rel="stylesheet" href="/style.css">
+    <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+    <header></header>
+    <div transition-style="in:wipe:up">
+        <info>
+            <div>
+                <h1>International Factors Affecting Development 🌎</h1>
+            </div>
+            <div>
+                <content>
 <br>What international factors—circumstances outside of a nation—impact its development? Well, as it turns out, it all comes down to the international <i>economy</i>.
 
 <br><br>First, let's define a few terms:
@@ -25,5 +41,18 @@
     <ul><li>For instance, Japan encouraged automakers to export their products, which actually helped it gain an advantage in the global economy due to its ability to produce many vehicles and the world's demand for them. This advantage also translated to increased domestic economic growth, spurring development.</li>
 </ol>
 As it happens, scholars have identified that <b><i>nations practicing EOI tended to develop more than their ISI counterparts</i></b>, likely due to the advantages they reaped from specializing in certain products in global-facing trade to maximize their economic growth and, as a result, their development. In contrast, ISI nations contended with higher prices and stifled international economic cooperation, hindering development.
-
+</content>
+</div>
 <br><br><a href="/pages/development">Back</a>
+</info>
+</div>
+</body>
+<div id="footer"></div>
+<script>
+    fetch('/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+</script>
+</html>
