@@ -190,8 +190,8 @@ header {
   border-bottom: 1px solid;
   color: white;
   font-size: large;
-  align-items: right;
-  justify-content: right;
+  align-items: center;
+  /* justify-content: right; */
   display: flex;
 
   a {
@@ -210,6 +210,13 @@ header {
   a:hover {
     color: #fff;
     transition: color 0.3s ease;
+  }
+
+  .header-title {
+    align-items: left;
+    justify-self: left;
+    text-align: left;
+    margin-right: auto;
   }
 }
 
@@ -360,6 +367,10 @@ info {
   padding: 0;
 }
 
+.expandable-list.numbered {
+  list-style-type: decimal;
+}
+
 .expandable-list-tab {
   border-bottom: 1px dashed #d3d3d3;
 }
@@ -395,4 +406,8 @@ info {
   padding: 10px 0;
   font-size: 16px;
   line-height: 24px;
+}
+
+.puzzle-solve {
+  text-align: center;
 }
