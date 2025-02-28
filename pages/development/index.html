@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Development</title>
     <link rel="stylesheet" href="/style.css">
     <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/main.js"></script>
 </head>
-<div id="header"></div>
-<script>
-    fetch('/header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header').innerHTML = data;
-        });
-</script>
+
 <body>
-    <div transition-style="in:wipe:up">
+    <div class="flex-wrapper">
+        <header>
+            <p class="header-title"><a href='/pages'>The Development Dilemma</a></p>
+            <p><a href='/pages/puzzle/'>The Puzzle</a></p>
+            <div class="dropdown"><a href='/pages/development/'>Development</a>
+                <div class="dropdown-content">
+                    <a href="/pages/development/factors-domestic/">Domestic Factors</a>
+                    <a href="/pages/development/factors-international/">International Factors</a>
+                </div>
+            </div>
+            <p><a href='/pages/glossary'>Glossary</a></p>
+        </header>
         <info>
             <div>
                 <h1 class="info-header">Development</h1>
@@ -35,14 +41,15 @@
                     have:
                     <ul class="expandable-list">
                         <li class="expandable-list-tab">
-                        <div class="expandable-list-item">Less material wealth and income
-                        <span class="material-icons">keyboard_arrow_down</span></div>
+                            <div class="expandable-list-item">Less material wealth and income
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </div>
                             <ul class="expandable-list-content">
                                 <li>Between two nations, people in the less developed one tend to make less money from
                                     their employment and own less expensive goods.</li>
                             </ul>
-                            </li>
-                            <li class="expandable-list-tab">
+                        </li>
+                        <li class="expandable-list-tab">
                             <div class="expandable-list-item">Less equitable distribution of wealth
                                 <span class="material-icons">keyboard_arrow_down</span>
                             </div>
@@ -51,7 +58,7 @@
                                     people making much more money than the rest of the population (commonly referred to
                                     as the "1%" or "elite").</li>
                             </ul>
-                            <li class="expandable-list-tab">
+                        <li class="expandable-list-tab">
                             <div class="expandable-list-item">Continued migration from rural to urban areas
                                 <span class="material-icons">keyboard_arrow_down</span>
                             </div>
@@ -61,7 +68,7 @@
                                     receive better access to critical services—like education and healthcare—in the
                                     cities.</li>
                             </ul>
-                            <li class="expandable-list-tab">
+                        <li class="expandable-list-tab">
                             <div class="expandable-list-item">Lack of domestic investment in services and infrastructure
                                 <span class="material-icons">keyboard_arrow_down</span>
                             </div>
@@ -71,7 +78,7 @@
                                     Following the previous section's logic, the expenditures tend to go toward
                                     cities first, explaining better access to critical services in these areas.</li>
                             </ul>
-                            <li class="expandable-list-tab">
+                        <li class="expandable-list-tab">
                             <div class="expandable-list-item">Often, a younger and rapidly growing population
                                 <span class="material-icons">keyboard_arrow_down</span>
                             </div>
@@ -84,38 +91,43 @@
 
                     From now on, we will be adding terms to our <b><a href="/pages/glossary">glossary</a></b>. You can
                     access it at anytime from the header. So, let's add our first term!
-                    <br><b>&emsp;<span id="term-less-developed-countries">Less developed countries (LDCs)</b></span>: countries at a relatively low level of economic
+                    <br><b>&emsp;<span id="term-less-developed-countries">Less developed countries (LDCs)</b></span>:
+                    countries at a relatively low level of economic
                     development</br>
 
-                    <br>Next, let's talk about <b>factors affecting development.</b> <i>Make sure to complete these modules and then come back to this page!</i>
-                    <br><br><div class="factor-buttons"><span class="topic-button domestic" onclick="window.location.href='factors-domestic/';"><span class="hover-underline">Domestic Factors</span></span>
-                        &nbsp;&nbsp;&nbsp;<span class="topic-button international" onclick="window.location.href='factors-international/';"><span class="hover-underline">International Factors</span></span></div>
+                    <br>Next, let's talk about <b>factors affecting development.</b> <i>Make sure to complete these
+                        modules and then come back to this page!</i>
+                    <br><br>
+                    <div class="factor-buttons"><span class="topic-button domestic"
+                            onclick="window.location.href='factors-domestic/';"><span class="hover-underline">Domestic
+                                Factors</span></span>
+                        &nbsp;&nbsp;&nbsp;<span class="topic-button international"
+                            onclick="window.location.href='factors-international/';"><span
+                                class="hover-underline">International Factors</span></span></div>
 
-                        <span class="puzzle-solve important-text"><br>It looks like you've finished those modules!<br>Let's check your understanding.
+                    <span class="puzzle-solve important-text"><br>It looks like you've finished those modules!<br>Let's
+                        check your understanding.
                         <span class="emoji"><a href='/pages/puzzle/solution'>💡</a></span></span>
                 </content>
             </div>
         </info>
+    </div>
 </body>
-<div id="footer"></div>
-<script>
-    fetch('/footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer').innerHTML = data;
-        });
-</script>
+<footer>
+    <p>Developed by Ayush Shukla Arora for Northwestern Univeristy's Winter 2025 POLI_SCI 240</p>
+</footer>
 <script type="module">
     import { addVisitedPage, unlockPuzzleSolve } from '/src/main.js';
     document.addEventListener('DOMContentLoaded', () => {
         addVisitedPage('development');
     });
     document.addEventListener('DOMContentLoaded', () => {
-       if (unlockPuzzleSolve()) {
-        document.querySelector('.puzzle-solve').style.display = "block"
-       } else {
-        document.querySelector('.puzzle-solve').style.display = "none"
-       }
+        if (unlockPuzzleSolve()) {
+            document.querySelector('.puzzle-solve').style.display = "block"
+        } else {
+            document.querySelector('.puzzle-solve').style.display = "none"
+        }
     });
 </script>
+
 </html>

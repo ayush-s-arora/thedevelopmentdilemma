@@ -1,9 +1,21 @@
-@import "/node_modules/transition-style/";
 @import "/node_modules/material-icons/iconfont/filled.css";
 
 #chatbox {
   width: 60vw;
+  opacity: 1;
+  animation: fadein 0.5s;
 }
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 
 #chat-area {
   height: 500px;
@@ -45,9 +57,20 @@
 }
 
 .user-message {
-  background-color: rgb(7,7,7);
+  background-color: rgb(7, 7, 7);
   border-radius: 100px;
   text-align: right;
+}
+
+.message.fade-in-slide-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.message.fade-in-slide-up.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 input {
@@ -59,10 +82,11 @@ button {
   width: 20%;
   height: 50px;
   border-radius: 10px;
-  background-color: black; 
+  background-color: black;
   color: white;
   font-family: inherit;
   font-size: large;
+  z-index: 2;
 }
 
 /*https://codepen.io/MysticZA/pen/zYNbzrN*/
@@ -89,9 +113,9 @@ button:before {
 button:after {
   content: "";
   background: linear-gradient(90deg,
-  #2b1de8,
-  #dd00f3,
-  #2b1de8);
+      #2b1de8,
+      #dd00f3,
+      #2b1de8);
   position: absolute;
   top: calc(50% - 2px);
   left: -2px;
@@ -142,17 +166,20 @@ button:not(:hover):after {
 }
 
 .button-reveal.clicked button {
-  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .button-reveal .underlying-text {
-  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .button-reveal.clicked .underlying-text {
-  visibility: visible;
+  opacity: 1;
 }
 
+html,
 body {
   background-image: radial-gradient(rgb(45, 44, 44), rgb(7, 7, 7));
   font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
@@ -163,20 +190,21 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  margin: 0;
 }
 
-intro {
+.intro {
   animation: fadein 3s;
   margin: auto;
   width: 50%;
-  padding: 10px;
   text-align: center;
   align-items: center;
   align-content: center;
-  height: 100vh;
   justify-content: center;
   font-size: x-large;
   display: flex;
+  z-index: 2;
+  flex-grow: 1;
 }
 
 @keyframes fadein {
@@ -193,9 +221,15 @@ intro {
 .emoji a {
   animation: pulse 1.5s infinite ease-in-out alternate;
 }
+
 @keyframes pulse {
-  from { transform: scale(0.9); }
-  to { transform: scale(1.1); }
+  from {
+    transform: scale(0.9);
+  }
+
+  to {
+    transform: scale(1.1);
+  }
 }
 
 header {
@@ -206,7 +240,6 @@ header {
   color: white;
   font-size: large;
   align-items: center;
-  /* justify-content: right; */
   display: flex;
 
   a {
@@ -215,11 +248,12 @@ header {
     display: inline-block;
   }
 
-  p, .dropdown {
+  p,
+  .dropdown {
     margin: 0 20px;
     position: relative;
     display: inline-block;
-  
+
   }
 
   a:hover {
@@ -233,7 +267,13 @@ header {
     text-align: left;
     margin-right: auto;
   }
+
+  .header-title a:hover {
+    color: #fff;
+    transition: color 0.3s ease;
+  }
 }
+
 /*https://codepen.io/nefejames/pen/yyBNogQ*/
 .dropdown-content {
   opacity: 0;
@@ -243,7 +283,7 @@ header {
   width: inherit;
   text-align: center;
   font-size: 10px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(255, 255, 255, 0.2);
   transform: translateY(-20px);
   transition: opacity 0.3s ease, transform 0.3s ease;
   padding: 5px;
@@ -271,7 +311,11 @@ header {
 footer {
   font-size: x-small;
   text-align: right;
+  margin-right: 10px;
+  margin-top: auto;
+  flex-shrink: 0;
 }
+
 
 .emoji {
   a {
@@ -282,16 +326,12 @@ footer {
   }
 }
 
-#particles-js {
-  width: 100%;
-  height: 100%;
-}
-
 info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   a {
     text-decoration: underline dotted white;
     color: lightgray;
@@ -316,7 +356,7 @@ info {
     line-height: 1.6;
     justify-content: center;
   }
-  
+
   .info-header {
     text-align: center;
   }
@@ -346,7 +386,6 @@ info {
   font-size: 18px;
   font-weight: 600;
   color: white;
-  font-family: "Poppins", sans-serif;
   text-align: center;
   background-size: cover;
   background-position: center;
@@ -456,7 +495,6 @@ info {
   opacity: 1;
   transform: translateX(-50%) translateY(0%);
   visibility: visible;
-  /* Slide up to original position */
 }
 
 /*https://codepen.io/Joy-Gohel-the-solid/pen/ZYEpZeo*/
@@ -482,6 +520,7 @@ info {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+
   .material-icons {
     font-size: 24px;
     margin-left: auto;
@@ -543,4 +582,55 @@ input[type=text] {
 .letter-navigation a:not(.exists) {
   color: #423d3d;
   pointer-events: none;
+}
+
+.flex-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+}
+
+@media (max-width: 600px) {
+  #mobile-warning {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(45, 44, 44);
+    color: ffffff;
+    text-align: center;
+    padding: 10px;
+    z-index: 9999;
+  }
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 0;
+}
+
+.transition-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.transition-page.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.transition-page.out {
+  opacity: 0;
+  transform: translateY(-20px);
 }

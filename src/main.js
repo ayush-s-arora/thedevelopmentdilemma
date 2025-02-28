@@ -1,5 +1,4 @@
 // Quizzes
-
 export function quizBot() {
   const questions = [
     { question: "Which of the following is NOT considered a domestic factor that directly affects development? Type the number that corresponds to your answer. (e.g., \"1\" without the quotation marks) \n1. Geography, 2. Infrastructure, 3. Inflation, 4. Rule of Law", answer: "3" },
@@ -30,14 +29,16 @@ export function quizBot() {
     }, 100);
     if (currentQuestionIndex < questions.length) {
       const botMessage = document.createElement('div');
-      botMessage.classList.add('message', 'bot-message');
+      botMessage.classList.add('message', 'bot-message', 'fade-in-slide-up');
       botMessage.innerHTML = questions[currentQuestionIndex].question.replace(/\n/g, '<br>');
       chatArea.appendChild(botMessage);
+      setTimeout(() => botMessage.classList.add('show'), 1000);
     } else {
       const botMessage = document.createElement('div');
-      botMessage.classList.add('message', 'bot-message');
+      botMessage.classList.add('message', 'bot-message', 'fade-in-slide-up');
       botMessage.textContent = ` Your final score is ${score}/${questions.length}. I hope you had fun and learned something!`;
       chatArea.appendChild(botMessage);
+      setTimeout(() => botMessage.classList.add('show'), 1000);
       scoreDisplay.innerHTML = `<strong>Final Score: ${score}/${questions.length}</strong>`;
       const disconnectedIndicator = document.createTextNode('[Disconnected] ');
       sender.prepend(disconnectedIndicator);
@@ -47,17 +48,17 @@ export function quizBot() {
     }
   }
 
-  let debounceTimeout; // Variable to hold the debounce timeout
+  let debounceTimeout;
 
   function handleAnswer() {
     if (debounceTimeout) {
-      clearTimeout(debounceTimeout); // Clear any existing timeout
+      clearTimeout(debounceTimeout);
     }
-  
+
     debounceTimeout = setTimeout(() => {
       if (isHandlingAnswer) return;
       isHandlingAnswer = true;
-  
+
       try {
         const userInput = userInputElement.value.trim();
         if (!userInput) {
@@ -65,16 +66,18 @@ export function quizBot() {
           return;
         }
         scoreDisplay.innerHTML = `<strong>Score: ${score}/${questions.length}</strong>`;
-  
+
         const userMessage = document.createElement('div');
-        userMessage.classList.add('message', 'user-message');
+        userMessage.classList.add('message', 'user-message', 'fade-in-slide-up');
         userMessage.textContent = userInput;
         chatArea.appendChild(userMessage);
-  
+        setTimeout(() => userMessage.classList.add('show'), 10);
+
         const correctAnswer = questions[currentQuestionIndex].answer.toLowerCase();
         const botMessage = document.createElement('div');
-        botMessage.classList.add('message', 'bot-message');
-  
+        botMessage.classList.add('message', 'bot-message', 'fade-in-slide-up');
+
+
         const correctMessages = [
           "That's right!",
           "Yep!",
@@ -87,9 +90,9 @@ export function quizBot() {
           "Not quite.",
           "Agh, unfortunately not correct."
         ];
-  
+
         let randomIndex = Math.floor(Math.random() * correctMessages.length);
-  
+
         if (userInput.toLowerCase() === correctAnswer) {
           botMessage.textContent = correctMessages[randomIndex];
           score++;
@@ -97,23 +100,24 @@ export function quizBot() {
           const incorrectIndex = Math.floor(Math.random() * incorrectMessages.length);
           botMessage.textContent = `${incorrectMessages[incorrectIndex]} The correct answer is: ${correctAnswer}`;
         }
-  
+
         chatArea.appendChild(botMessage);
+        setTimeout(() => botMessage.classList.add('show'), 1000);
         chatArea.scrollTop = chatArea.scrollHeight;
         userInputElement.value = '';
-  
+
         currentQuestionIndex++;
         scoreDisplay.innerHTML = `<strong>Score: ${score}/${questions.length}</strong>`;
-  
+
         setTimeout(() => {
           askQuestion();
           isHandlingAnswer = false;
         }, 1000);
       } catch (error) {
         console.error("Error in handleAnswer:", error);
-        isHandlingAnswer = false; // Ensure isHandlingAnswer is reset even on error
+        isHandlingAnswer = false;
       }
-    }, 200); // Adjust debounce delay as needed (200ms)
+    }, 200);
   }
 
   answerButton.addEventListener('click', handleAnswer);
@@ -175,10 +179,61 @@ letterLinks.forEach(link => {
   const targetLetter = document.getElementById(targetLetterId);
 
   if (targetLetter) { //to see if the letter exists in glossary
-    link.classList.add('exists'); 
-    link.addEventListener('click', function(event) {
+    link.classList.add('exists');
+    link.addEventListener('click', function (event) {
       event.preventDefault();
       targetLetter.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const currentPage = document.querySelector('.transition-page');
+  if (currentPage) {
+    currentPage.classList.add('active'); // Fade in current page
+  }
+
+  const links = document.querySelectorAll('a[href]');
+  links.forEach(link => {
+    link.addEventListener('click', (event) => {
+      const href = link.getAttribute('href');
+      if (href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) {
+        return;
+      }
+      event.preventDefault();
+
+      if (currentPage) {
+        currentPage.classList.add('out'); // Fade out current page
+        setTimeout(() => {
+          window.location.href = href;
+        }, 400); // Match transition duration
+      } else {
+        window.location.href = href;
+      }
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const currentPage = document.querySelector('.transition-page');
+  const overlay = document.querySelector('.overlay');
+
+  if (currentPage) {
+    currentPage.classList.add('active');
+    overlay.classList.add('active'); // Fade in overlay
+  }
+
+  const links = document.querySelectorAll('a[href]');
+  links.forEach(link => {
+    link.addEventListener('click', (event) => {
+      // ... existing link click logic ...
+      if (currentPage) {
+        currentPage.classList.add('out');
+        overlay.classList.add('out'); // Fade out overlay
+        setTimeout(() => {
+          window.location.href = href;
+        }, 400);
+      }
+    });
+  });
 });

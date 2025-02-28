@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,131 +8,187 @@
     <link rel="stylesheet" href="/style.css">
     <script type="module" src="/src/main.js"></script>
 </head>
+
 <body>
-    <div id="header"></div>
-    <script>
-        fetch('/header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header').innerHTML = data;
-            });
-    </script>
-        <div transition-style="in:wipe:up">
+    <div class="flex-wrapper">
+        <header>
+            <p class="header-title"><a href='/pages'>The Development Dilemma</a></p>
+            <p><a href='/pages/puzzle/'>The Puzzle</a></p>
+            <div class="dropdown"><a href='/pages/development/'>Development</a>
+                <div class="dropdown-content">
+                    <a href="/pages/development/factors-domestic/">Domestic Factors</a>
+                    <a href="/pages/development/factors-international/">International Factors</a>
+                </div>
+            </div>
+            <p><a href='/pages/glossary'>Glossary</a></p>
+        </header>
         <info>
             <div>
                 <h1 class="info-header">International Factors Affecting Development 🌎</h1>
             </div>
             <div>
                 <content>
-<br>What international factors—circumstances outside of a nation—impact its development? Well, as it turns out, it all comes down to the international <i>economy</i>.
+                    <br>What international factors—circumstances outside of a nation—impact its development? Well,
+                    as it turns out, it all comes down to the international <i>economy</i>.
 
-<br><br>First, let's define a few terms:
-<ul class="expandable-list">
-    <li class="expandable-list-tab">
-        <div class="expandable-list-item"><span id="term-primary-products">Primary products</span>
-        <span class="material-icons">keyboard_arrow_down</span></div>
-        <ul class="expandable-list-content">
-            Raw materials and agricultural products, typically unprocessed or only slightly processed. e.g., crops and fabrics
-        </ul>
-    </li>
-    <li class="expandable-list-tab">
-        <div class="expandable-list-item"><span id="term-primary-sector">Primary sector</span>
-        <span class="material-icons">keyboard_arrow_down</span></div>
-        <ul class="expandable-list-content">
-            Part of a nation's economy specializing in primary products
-        </ul>
-    </li>
-    <li class="expandable-list-tab">
-        <div class="expandable-list-item"><span id="term-secondary-sector">Secondary sector</span>
-        <span class="material-icons">keyboard_arrow_down</span></div>
-        <ul class="expandable-list-content">
-            Part of a nation's economy specializing in the production of goods with primary products, such as manufacturing and construction
-        </ul>
-    </li>
-    <li class="expandable-list-tab">
-        <div class="expandable-list-item"><span id="term-tertiary-sector">Tertiary sector</span>
-        <span class="material-icons">keyboard_arrow_down</span></div>
-        <ul class="expandable-list-content">
-            Part of a nation's economy specializing in services provided to others, such as accounting or education
-            <ul><li>These sectors are distinct from each other in a nation's economy.</li></ul>
-        </li>
-        </ul>
-    </li>
-</ul>
-<ul class="expandable-list">
-    <li class="expandable-list-tab">
-        <div class="expandable-list-item"><span id="term-oligopoly">Oligopoly</span>
-            <span class="material-icons">keyboard_arrow_down</span></div>
-            <ul class="expandable-list-content">
-                A situation in which a market or industry is dominated by a few firms. For instance, the United States's wireless carrier industry is an oligopoly, dominated by 3 firms (AT&T, T-Mobile, and Verizon).
-            </ul>
-    </li>
-    <li class="expandable-list-tab">
-        <div class="expandable-list-item"><span id="term-terms-of-trade">Terms of trade</span>
-            <span class="material-icons">keyboard_arrow_down</span></div>
-            <ul class="expandable-list-content">
-                The relationship between a country's export prices and its import prices
-            </ul>
-    </li>  
-</ul>
+                    <br><br>First, let's define a few terms:
+                    <ul class="expandable-list">
+                        <li class="expandable-list-tab">
+                            <div class="expandable-list-item"><span id="term-primary-products">Primary
+                                    products</span>
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </div>
+                            <ul class="expandable-list-content">
+                                Raw materials and agricultural products, typically unprocessed or only slightly
+                                processed. e.g., crops and fabrics
+                            </ul>
+                        </li>
+                        <li class="expandable-list-tab">
+                            <div class="expandable-list-item"><span id="term-primary-sector">Primary sector</span>
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </div>
+                            <ul class="expandable-list-content">
+                                Part of a nation's economy specializing in primary products
+                            </ul>
+                        </li>
+                        <li class="expandable-list-tab">
+                            <div class="expandable-list-item"><span id="term-secondary-sector">Secondary
+                                    sector</span>
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </div>
+                            <ul class="expandable-list-content">
+                                Part of a nation's economy specializing in the production of goods with primary
+                                products, such as manufacturing and construction
+                            </ul>
+                        </li>
+                        <li class="expandable-list-tab">
+                            <div class="expandable-list-item"><span id="term-tertiary-sector">Tertiary sector</span>
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </div>
+                            <ul class="expandable-list-content">
+                                Part of a nation's economy specializing in services provided to others, such as
+                                accounting or education
+                                <ul>
+                                    <li>These sectors are distinct from each other in a nation's economy.</li>
+                                </ul>
+                        </li>
+                    </ul>
+                    </li>
+                    </ul>
+                    <ul class="expandable-list">
+                        <li class="expandable-list-tab">
+                            <div class="expandable-list-item"><span id="term-oligopoly">Oligopoly</span>
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </div>
+                            <ul class="expandable-list-content">
+                                A situation in which a market or industry is dominated by a few firms. For instance,
+                                the United States's wireless carrier industry is an oligopoly, dominated by 3 firms
+                                (AT&T, T-Mobile, and Verizon).
+                            </ul>
+                        </li>
+                        <li class="expandable-list-tab">
+                            <div class="expandable-list-item"><span id="term-terms-of-trade">Terms of trade</span>
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </div>
+                            <ul class="expandable-list-content">
+                                The relationship between a country's export prices and its import prices
+                            </ul>
+                        </li>
+                    </ul>
 
-<br>Now that we have the background required to understand the international economy, let's break down two sets of economic policies that countries adopted for international trade in prior decades and understand how they've impacted national development.
-<ol type="1" class="expandable-list numbered">
-    <li class="expandable-list-tab">
-        <div class="expandable-list-item"><span id="term-import-substituting-industrialization">Import-substituting industrialization (ISI)</span>
-        <span class="material-icons">keyboard_arrow_down</span></div>
-        <ul class="expandable-list-content">
-            This set of policies was pursued by most developing countries from the 1930s through the 1980s to reduce imports and encourage domestic manufacturing, often through trade barriers, subsidies to manufacturing, and state ownership of basic industries.
-                <br><br>In other words, developing nations sought to bolster their economies to spur increased development. So, they imported less goods from other nations and employed government policies to push for production in the nation. These policies included making trade more difficult, paying manufacturing companies to keep manufacturing, and taking over industries such as mining and agriculture (think primary sector) to encourage these industries to operate in the nation.
-                <ul><li>For instance, Mexico placed high tarrifs on imported (not made in Mexico) vehicles and parts from the 1960s through the 1980s. Tarriffs are price surcharges that, ultimately, are passed on to the consumer. So, these tariffs meant that vehicles produced in the country were cheaper than their counterparts manufactured elsewhere, encouraging customers to buy local.</li>
-                <li><b>Protectionist policies</b> are government policies that seek to bolster or ensure the stability of the local economy by safeguarding it from foreign competition (e.g., tarrifs, subsidies).</li>
-                </ul>
-            </ul>
-        </ul>
-    <li class="expandable-list-tab">
-        <div class="expandable-list-item"><span id="term-export-oriented-industrialization">Export-oriented industrialization (EOI)</span>
-        <span class="material-icons">keyboard_arrow_down</span></div>
-        <ul class="expandable-list-content">
-    This set of policies was originally pursued in the mid-1960s by several East Asian countries to spur manufacturing for export, often through subsidies and incentives for export production.
-    <br><br>In other words, these nations also sought to bolster their economies to spur increased development. However, they did so by encouraging the export of goods, presenting a stark contrast to ISI's less trade-friendly approach. Their policies included paying companies to export their products.
-    <ul><li>For instance, Japan encouraged automakers to export their products, which actually helped it gain an advantage in the global economy due to its ability to produce many vehicles and the world's demand for them. This advantage also translated to increased domestic economic growth, spurring development.</li></li></ul>
-</ol>
+                    <br>Now that we have the background required to understand the international economy, let's
+                    break down two sets of economic policies that countries adopted for international trade in prior
+                    decades and understand how they've impacted national development.
+                    <ol type="1" class="expandable-list numbered">
+                        <li class="expandable-list-tab">
+                            <div class="expandable-list-item"><span
+                                    id="term-import-substituting-industrialization">Import-substituting
+                                    industrialization (ISI)</span>
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </div>
+                            <ul class="expandable-list-content">
+                                This set of policies was pursued by most developing countries from the 1930s through
+                                the 1980s to reduce imports and encourage domestic manufacturing, often through
+                                trade barriers, subsidies to manufacturing, and state ownership of basic industries.
+                                <br><br>In other words, developing nations sought to bolster their economies to spur
+                                increased development. So, they imported less goods from other nations and employed
+                                government policies to push for production in the nation. These policies included
+                                making trade more difficult, paying manufacturing companies to keep manufacturing,
+                                and taking over industries such as mining and agriculture (think primary sector) to
+                                encourage these industries to operate in the nation.
+                                <ul>
+                                    <li>For instance, Mexico placed high tarrifs on imported (not made in Mexico)
+                                        vehicles and parts from the 1960s through the 1980s. Tarriffs are price
+                                        surcharges that, ultimately, are passed on to the consumer. So, these
+                                        tariffs meant that vehicles produced in the country were cheaper than their
+                                        counterparts manufactured elsewhere, encouraging customers to buy local.
+                                    </li>
+                                    <li><b>Protectionist policies</b> are government policies that seek to bolster
+                                        or ensure the stability of the local economy by safeguarding it from foreign
+                                        competition (e.g., tarrifs, subsidies).</li>
+                                </ul>
+                            </ul>
+                            </ul>
+                        <li class="expandable-list-tab">
+                            <div class="expandable-list-item"><span
+                                    id="term-export-oriented-industrialization">Export-oriented industrialization
+                                    (EOI)</span>
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </div>
+                            <ul class="expandable-list-content">
+                                This set of policies was originally pursued in the mid-1960s by several East Asian
+                                countries to spur manufacturing for export, often through subsidies and incentives
+                                for export production.
+                                <br><br>In other words, these nations also sought to bolster their economies to spur
+                                increased development. However, they did so by encouraging the export of goods,
+                                presenting a stark contrast to ISI's less trade-friendly approach. Their policies
+                                included paying companies to export their products.
+                                <ul>
+                                    <li>For instance, Japan encouraged automakers to export their products, which
+                                        actually helped it gain an advantage in the global economy due to its
+                                        ability to produce many vehicles and the world's demand for them. This
+                                        advantage also translated to increased domestic economic growth, spurring
+                                        development.</li>
+                        </li>
+                        </ul>
+                    </ol>
 
-So, ISI or EOI? Which set of policies do you think better helped nations develop, and why?
+                    So, ISI or EOI? Which set of policies do you think better helped nations develop, and why?
 
-<br><br>
-<span class="button-reveal">
-    <button id="reveal-button">Reveal</button>
-    <span class="underlying-text">As it happens, scholars have identified that <b><i>nations practicing EOI tended to develop more than their ISI counterparts</i></b>, likely due to the advantages they reaped from specializing in certain products in global-facing trade to maximize their economic growth and, as a result, their development. In contrast, ISI nations contended with higher prices and stifled international economic cooperation, hindering development.
-    </span>
-</span>
-<script>
-    const revealButton = document.getElementById('reveal-button');
-    const buttonContainer = document.querySelector('.button-reveal');
-    revealButton.addEventListener('click', () => {
-        buttonContainer.classList.add('clicked');
-        revealButton.style.pointerEvents = "none"
-        revealButton.style.display = "none"
-    })
-</script>
-</content>
-</div>
-<br><br><button onclick="window.location.href='/pages/development'";>Back</button>
-</info>
-</div>
+                    <br><br>
+                    <span class="button-reveal">
+                        <button id="reveal-button">Reveal</button>
+                        <span class="underlying-text">As it happens, scholars have identified that <b><i>nations
+                                    practicing EOI tended to develop more than their ISI counterparts</i></b>,
+                            likely due to the advantages they reaped from specializing in certain products in
+                            global-facing trade to maximize their economic growth and, as a result, their
+                            development. In contrast, ISI nations contended with higher prices and stifled
+                            international economic cooperation, hindering development.
+                        </span>
+                    </span>
+                    <script>
+                        const revealButton = document.getElementById('reveal-button');
+                        const buttonContainer = document.querySelector('.button-reveal');
+                        revealButton.addEventListener('click', () => {
+                            buttonContainer.classList.add('clicked');
+                            revealButton.style.pointerEvents = "none"
+                            revealButton.style.display = "none"
+                        })
+                    </script>
+                </content>
+            </div>
+            <br><br><button onclick="window.location.href='/pages/development'" ;>Back</button>
+        </info>
+        <footer>
+            <p>Developed by Ayush Shukla Arora for Northwestern Univeristy's Winter 2025 POLI_SCI 240</p>
+        </footer>
+        <script type="module">
+            import { addVisitedPage } from '/src/main.js';
+            document.addEventListener('DOMContentLoaded', () => {
+                addVisitedPage('factorsInternational');
+            });
+        </script>
+    </div>
 </body>
-<div id="footer"></div>
-<script>
-    fetch('/footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer').innerHTML = data;
-        });
-</script>
-<script type="module">
-    import { addVisitedPage } from '/src/main.js';
-    document.addEventListener('DOMContentLoaded', () => {
-        addVisitedPage('factorsInternational');
-    });
-</script>
+
 </html>

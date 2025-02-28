@@ -7,50 +7,60 @@
     <title>Puzzle | Solution</title>
     <link rel="stylesheet" href="/style.css">
     <script type="module" src="/src/main.js"></script>
-</head>
-<div id="header"></div>
-<script>
-    fetch('/header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header').innerHTML = data;
-        });
-</script>
-<info>
-   <h1 class="info-header">We set out on this journey to solve the puzzle:</h1>
-    <content>
-        <span class="important-text">Why are some countries rich and others poor?</span>
 
-        <br>Thanks for your time! Think you've learned everything you need to know? Go ahead and put your skills to the test!
-        <div id="chatbox">
-            <br>
-            <div id="chat-area">
-                <div class="sender">
-                    <span class="material-icons">person</span>
-                    <p id="sender-name">Not Professor Gilbert</p></div>
+</head>
+
+<body>
+    <div class="flex-wrapper">
+        <header>
+            <p class="header-title"><a href='/pages'>The Development Dilemma</a></p>
+            <p><a href='/pages/puzzle/'>The Puzzle</a></p>
+            <div class="dropdown"><a href='/pages/development/'>Development</a>
+                <div class="dropdown-content">
+                    <a href="/pages/development/factors-domestic/">Domestic Factors</a>
+                    <a href="/pages/development/factors-international/">International Factors</a>
+                </div>
             </div>
-            <div id="chat-inputs">
-            <input type="text" id="user-input" placeholder="Your answer">
-            <button id="answer-button">Answer</button></div>
-        </div>
-        <div id="score">
-        </div>
-        <br><div style="display: flex; justify-content: center;">
-            <button onclick="window.location.href='/pages/'";>Home</button>
-        </div>
-    </content>
-</info>
-<script type="module">
-    import { quizBot } from '/src/main.js';
-    document.addEventListener('DOMContentLoaded', () => {
-        quizBot();
-    });
-</script>
-<div id="footer"></div>
-<script>
-    fetch('/footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer').innerHTML = data;
-        });
-</script>
+            <p><a href='/pages/glossary'>Glossary</a></p>
+        </header>
+        <info>
+            <h1 class="info-header">We set out on this journey to solve the puzzle:</h1>
+            <content>
+                <span class="important-text">Why are some countries rich and others poor?</span>
+
+                <br>Thanks for your time! Think you've learned everything you need to know? Go ahead and put your skills
+                to the test!
+                <div id="chatbox">
+                    <br>
+                    <div id="chat-area">
+                        <div class="sender">
+                            <span class="material-icons">person</span>
+                            <p id="sender-name">Not Professor Gilbert</p>
+                        </div>
+                    </div>
+                    <div id="chat-inputs">
+                        <input type="text" id="user-input" placeholder="Your answer">
+                        <button id="answer-button">Answer</button>
+                    </div>
+                </div>
+                <div id="score">
+                </div>
+                <br>
+                <div style="display: flex; justify-content: center;">
+                    <button onclick="window.location.href='/pages/'" ;>Home</button>
+                </div>
+            </content>
+        </info>
+        <script type="module">
+            import { quizBot } from '/src/main.js';
+            document.addEventListener('DOMContentLoaded', () => {
+                quizBot();
+            });
+        </script>
+        <footer>
+            <p>Developed by Ayush Shukla Arora for Northwestern Univeristy's Winter 2025 POLI_SCI 240</p>
+        </footer>
+    </div>
+</body>
+
+</html>
