@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Development</title>
+    <title>Puzzle | Solution</title>
     <link rel="stylesheet" href="/style.css">
     <script type="module" src="/src/main.js"></script>
 </head>
-<header></header>
-
+<div id="header"></div>
+<script>
+    fetch('/header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        });
+</script>
+<info>
 We set out on this journey to solve the puzzle:
-
+<content>
 <br>Why are some countries rich and others poor?
 
 <br>Thanks for your time! But, do you think you know the solution? Go ahead and put your skills to the test!
@@ -26,6 +33,8 @@ We set out on this journey to solve the puzzle:
 <a href="/pages/">Home</a>
 
 <script src="/src/main.js"></script>
+</content>
+</info>
 <div id="footer"></div>
 <script>
     fetch('/footer.html')

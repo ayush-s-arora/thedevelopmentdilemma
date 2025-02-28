@@ -7,8 +7,14 @@
     <link rel="stylesheet" href="/style.css">
     <script type="module" src="/src/main.js"></script>
 </head>
-<header></header>
-<body>
+<div id="header"></div>
+<script>
+    fetch('/header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        });
+</script><body>
     <div transition-style="in:wipe:up">
         <info>
         <div>
@@ -16,11 +22,12 @@
     </div>
     <div>
         <content>
+            <h2>
         Google's Dictionary defines development as <a href="https://www.google.com/search?q=development+definition", target="_blank">"a specified state of growth or advancement."</a>
 
         <br>But what does that mean for international relations?</br>
-
-        Well, coming back to our puzzle<\toolip for Why are some countries rich and others poor?>, poorer countries tend to have:
+    </h2>
+        Well, coming back to our <tooltip hover-text="Why are some countries rich and others poor?">puzzle</tooltip>, poorer countries tend to have:
         <ul>
         <li>Less material wealth and income</li>
         <\would be nice to fade this in somehow on hover or change up><ul><li>Between two nations, people in the less developed one tend to make less money from their employment and own less expensive goods.</li></ul>
@@ -41,7 +48,7 @@
         <button onclick="window.location.href='factors-domestic/';">Domestic Factors</a></button>
         <button onclick="window.location.href='factors-international/';">International Factors</a></button>
 
-        <br><br>Have you finished those modules? If so, let's define the answer to our puzzle! 
+        <br><br>Have you finished those modules? If so, let's check your understanding! 
         <span class="emoji"><a href='/pages/puzzle/solution'>💡</a></span>
         </content>
         </div>
