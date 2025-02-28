@@ -2,29 +2,51 @@
 @import "/node_modules/material-icons/iconfont/filled.css";
 
 #chatbox {
-  width: 300px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 20px;
+  width: 60vw;
 }
 
 #chat-area {
-  height: 200px;
+  height: 500px;
   overflow-y: scroll;
+  overflow-x: hidden;
   margin-bottom: 10px;
+  border: solid;
+  border-color: #464646;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#chat-inputs {
+  text-align: center;
+}
+
+#score {
+  text-align: center;
+}
+
+.sender {
+  background-color: rgb(7, 7, 7);
+  padding: 10px;
+  box-shadow: 0px 0px 2px rgba(192, 192, 192, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: small;
 }
 
 .message {
-  padding: 5px;
-  margin: 5px 0;
+  padding: 25px;
+  margin: 10px 0;
+  font-size: small;
 }
 
 .bot-message {
-  background-color: #f0f0f0;
+  background-color: rgb(45, 44, 44);
+  border-radius: 100px;
 }
 
 .user-message {
-  background-color: #c0f0f0;
+  background-color: rgb(7,7,7);
+  border-radius: 100px;
   text-align: right;
 }
 
@@ -155,22 +177,6 @@ intro {
   justify-content: center;
   font-size: x-large;
   display: flex;
-
-  .emoji {
-    height: 5px;
-    border-radius: 100px;
-    animation: glow 1s infinite alternate;
-  }
-}
-
-@keyframes glow {
-  from {
-    box-shadow: 0 0 1px -5px #aef4af;
-  }
-
-  to {
-    box-shadow: 0 0 1px 5px #aef4af;
-  }
 }
 
 @keyframes fadein {
@@ -181,6 +187,15 @@ intro {
   to {
     opacity: 1;
   }
+}
+
+/*https://codepen.io/nelledejones/pen/gOOPWrK*/
+.emoji a {
+  animation: pulse 1.5s infinite ease-in-out alternate;
+}
+@keyframes pulse {
+  from { transform: scale(0.9); }
+  to { transform: scale(1.1); }
 }
 
 header {
@@ -219,23 +234,34 @@ header {
     margin-right: auto;
   }
 }
-
+/*https://codepen.io/nefejames/pen/yyBNogQ*/
 .dropdown-content {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
   position: absolute;
   background-color: #464646;
   width: inherit;
   text-align: center;
-  font-size: medium;
+  font-size: 10px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
   padding: 5px;
   z-index: 1;
   overflow: visible;
+  border-radius: 5px;
 }
 
 .dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-content a {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
   display: block;
-  transition: color 0.3s ease;
 }
 
 .dropdown-content a:hover {
@@ -304,30 +330,102 @@ info {
   display: block;
 }
 
-/*https://codepen.io/denic/details/GRoOxbM*/
-/* typed {
-  width: 22ch;
-  animation: typing 1.5s steps(23), blink .5s step-end infinite alternate;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid;
-  /* font-family: monospace; */
-/* font-size: 2em; */
-/* }
-
-@keyframes typing {
-  from {
-    width: 0
-  }
+.factor-buttons {
+  text-align: center;
+  justify-content: center;
+  display: flex;
 }
-    
-@keyframes blink {
-  50% {
-    border-color: transparent
-  }
-} */
 
-/*https://codepen.io/t_herper/pen/YPKBYQv*/
+/*https://uiverse.io/Voxybuns/lucky-fireant-71*/
+.topic-button {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.topic-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: inherit;
+  transition: all 0.3s ease;
+}
+
+.topic-button span {
+  position: relative;
+  z-index: 2;
+  padding: 8px 12px;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.topic-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.topic-button:hover::before {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.topic-button.domestic {
+  background-image: url('public/us-supreme-court-building.jpg');
+}
+
+.topic-button.international {
+  background-image: url('public/world.jpg');
+}
+
+/*https://codepen.io/nefejames/pen/qEWBOBz*/
+.topic-button .hover-underline {
+  color: #ffffff;
+  position: relative;
+  display: inline-block;
+}
+
+.hover-underline::after,
+.hover-underline::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #2b1de8, #dd00f3);
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease-out;
+}
+
+.hover-underline::before {
+  top: -5px;
+  transform-origin: left;
+}
+
+.hover-underline:hover::after,
+.hover-underline:hover::before {
+  transform: scaleX(1);
+}
+
 
 /*https://codepen.io/kazmi066/pen/JoPJgzd*/
 .tooltip {
@@ -410,4 +508,24 @@ info {
 
 .puzzle-solve {
   text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(7, 7, 7);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(45, 44, 44);
+  border-radius: 10px;
+}
+
+input[type=text] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
 }

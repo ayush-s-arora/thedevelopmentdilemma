@@ -1,55 +1,130 @@
 // Quizzes
-// const questions = [
-//   { question: "What is 2 + 2?", answer: "4" },
-//   { question: "What is the capital of France?", answer: "Paris" }
-// ];
 
-// let currentQuestionIndex = 0;
+export function quizBot() {
+  const questions = [
+    { question: "Which of the following is NOT considered a domestic factor that directly affects development? Type the number that corresponds to your answer. (e.g., \"1\" without the quotation marks) \n1. Geography, 2. Infrastructure, 3. Inflation, 4. Rule of Law", answer: "3" },
+    { question: "Which of the following is an explanation for the resource curse? \n1. Religion, 2. Corruption, 3. Illegal drug use, 4. International bargaining power", answer: "2" },
+    { question: "Which set of industrialization policies tends to help nations develop more? \n1. EOI helps more than ISI, 2. ISI helps more than EOI", answer: "1" },
+    { question: "Which of the following usually occured in tropical colonies? \n1. Movement, 2. Extraction", answer: "2" },
+    { question: "Which of the following most accurately describes the usual population of LDCs? \n1. Older, 2. Racially diverse, 3. Small, 4. Younger", answer: "4" },
+    { question: "Mexico employed which of the following from the 1960s to the 1980s? \n1. Cooperative trade agreements , 2. High tariffs, 3. Non-state ownership of basic industries, 4. Export subsidies", answer: "2" },
+    { question: "Which of the following is an example of an oligopoly? \n1. The agricultural market, 2. The stock market, 3. Street vendors, 4. The wireless carrier industry", answer: "4" },
+    { question: "Which of the following is NOT a characteristic of rule of law? \n1. Reliability, 2. Dependability, 3. Strict punishments, 4. Regulation", answer: "3" },
+    { question: "Which of the following is a concern that arises from being a landlocked nation? \n1. Gas prices, 2. Government corruption, 3. Inhibited trade, 4. Inferior infrastructure", answer: "3" },
+    { question: "LDCs tend to specialize in ____ \n1. Primary products, 2. Financial services, 3. Secondary products, 4. Timber", answer: "1" }
+  ];
 
-// document.getElementById('send-button').addEventListener('click', function () {
-//   const userInput = document.getElementById('user-input').value;
-//   const chatArea = document.getElementById('chat-area');
+  let currentQuestionIndex = 0;
+  let score = 0;
+  let isHandlingAnswer = false;
 
-//   // Display user message
-//   const userMessage = document.createElement('div');
-//   userMessage.classList.add('message', 'user-message');
-//   userMessage.textContent = userInput;
-//   chatArea.appendChild(userMessage);
+  const answerButton = document.getElementById('answer-button');
+  const userInputElement = document.getElementById('user-input');
+  const chatArea = document.getElementById('chat-area');
+  const scoreDisplay = document.getElementById('score');
+  const sender = document.getElementById('sender-name')
 
-//   // Check the answer and respond
-//   const correctAnswer = questions[currentQuestionIndex].answer.toLowerCase();
-//   if (userInput.toLowerCase() === correctAnswer) {
-//     const botMessage = document.createElement('div');
-//     botMessage.classList.add('message', 'bot-message');
-//     botMessage.textContent = "Correct! Well done!";
-//     chatArea.appendChild(botMessage);
-//   } else {
-//     const botMessage = document.createElement('div');
-//     botMessage.classList.add('message', 'bot-message');
-//     botMessage.textContent = `Oops, that's not right. The correct answer is: ${correctAnswer}`;
-//     chatArea.appendChild(botMessage);
-//   }
+  function askQuestion() {
+    setTimeout(() => {
+      chatArea.scrollTop = chatArea.scrollHeight;
+    }, 100);
+    if (currentQuestionIndex < questions.length) {
+      const botMessage = document.createElement('div');
+      botMessage.classList.add('message', 'bot-message');
+      botMessage.innerHTML = questions[currentQuestionIndex].question.replace(/\n/g, '<br>');
+      chatArea.appendChild(botMessage);
+    } else {
+      const botMessage = document.createElement('div');
+      botMessage.classList.add('message', 'bot-message');
+      botMessage.textContent = ` Your final score is ${score}/${questions.length}. I hope you had fun and learned something!`;
+      chatArea.appendChild(botMessage);
+      scoreDisplay.innerHTML = `<strong>Final Score: ${score}/${questions.length}</strong>`;
+      const disconnectedIndicator = document.createTextNode('[Disconnected] ');
+      sender.prepend(disconnectedIndicator);
+      userInputElement.value = "";
+      userInputElement.disabled = true;
+      answerButton.disabled = true;
+    }
+  }
 
-//   // Move to the next question
-//   currentQuestionIndex++;
-//   if (currentQuestionIndex < questions.length) {
-//     const nextQuestion = document.createElement('div');
-//     nextQuestion.classList.add('message', 'bot-message');
-//     nextQuestion.textContent = questions[currentQuestionIndex].question;
-//     chatArea.appendChild(nextQuestion);
-//   } else {
-//     const botMessage = document.createElement('div');
-//     botMessage.classList.add('message', 'bot-message');
-//     botMessage.textContent = "You've completed the quiz! Great job!";
-//     chatArea.appendChild(botMessage);
-//   }
+  let debounceTimeout; // Variable to hold the debounce timeout
 
-//   // Scroll to the bottom
-//   chatArea.scrollTop = chatArea.scrollHeight;
+  function handleAnswer() {
+    if (debounceTimeout) {
+      clearTimeout(debounceTimeout); // Clear any existing timeout
+    }
+  
+    debounceTimeout = setTimeout(() => {
+      if (isHandlingAnswer) return;
+      isHandlingAnswer = true;
+  
+      try {
+        const userInput = userInputElement.value.trim();
+        if (!userInput) {
+          isHandlingAnswer = false;
+          return;
+        }
+        scoreDisplay.innerHTML = `<strong>Score: ${score}/${questions.length}</strong>`;
+  
+        const userMessage = document.createElement('div');
+        userMessage.classList.add('message', 'user-message');
+        userMessage.textContent = userInput;
+        chatArea.appendChild(userMessage);
+  
+        const correctAnswer = questions[currentQuestionIndex].answer.toLowerCase();
+        const botMessage = document.createElement('div');
+        botMessage.classList.add('message', 'bot-message');
+  
+        const correctMessages = [
+          "That's right!",
+          "Yep!",
+          "Perfect!",
+          "Great work!"
+        ];
+        const incorrectMessages = [
+          "Nope, sorry.",
+          "Whoops!",
+          "Not quite.",
+          "Agh, unfortunately not correct."
+        ];
+  
+        let randomIndex = Math.floor(Math.random() * correctMessages.length);
+  
+        if (userInput.toLowerCase() === correctAnswer) {
+          botMessage.textContent = correctMessages[randomIndex];
+          score++;
+        } else {
+          const incorrectIndex = Math.floor(Math.random() * incorrectMessages.length);
+          botMessage.textContent = `${incorrectMessages[incorrectIndex]} The correct answer is: ${correctAnswer}`;
+        }
+  
+        chatArea.appendChild(botMessage);
+        chatArea.scrollTop = chatArea.scrollHeight;
+        userInputElement.value = '';
+  
+        currentQuestionIndex++;
+        scoreDisplay.innerHTML = `<strong>Score: ${score}/${questions.length}</strong>`;
+  
+        setTimeout(() => {
+          askQuestion();
+          isHandlingAnswer = false;
+        }, 1000);
+      } catch (error) {
+        console.error("Error in handleAnswer:", error);
+        isHandlingAnswer = false; // Ensure isHandlingAnswer is reset even on error
+      }
+    }, 200); // Adjust debounce delay as needed (200ms)
+  }
 
-//   // Clear the input
-//   document.getElementById('user-input').value = '';
-// });  
+  answerButton.addEventListener('click', handleAnswer);
+  userInputElement.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleAnswer();
+    }
+  });
+  askQuestion();
+}
 
 // Info Tabs
 const infoTabs = document.querySelectorAll('.expandable-list-tab');
@@ -69,13 +144,13 @@ infoTabs.forEach((tab) => {
 export function addVisitedPage(pageIdentifier) {
   let visitedPages = sessionStorage.getItem('visitedPages');
   if (visitedPages) {
-      visitedPages = JSON.parse(visitedPages);
+    visitedPages = JSON.parse(visitedPages);
   } else {
-      visitedPages = [];
+    visitedPages = [];
   }
   if (!visitedPages.includes(pageIdentifier)) {
-      visitedPages.push(pageIdentifier);
-      sessionStorage.setItem('visitedPages', JSON.stringify(visitedPages));
+    visitedPages.push(pageIdentifier);
+    sessionStorage.setItem('visitedPages', JSON.stringify(visitedPages));
   }
 }
 
@@ -83,8 +158,8 @@ export function addVisitedPage(pageIdentifier) {
 export function unlockPuzzleSolve() {
   let visitedPages = sessionStorage.getItem('visitedPages');
   if (visitedPages) {
-      visitedPages = JSON.parse(visitedPages);
-      return (visitedPages.includes('development') && visitedPages.includes('factorsDomestic') && visitedPages.includes('factorsInternational'));
+    visitedPages = JSON.parse(visitedPages);
+    return (visitedPages.includes('development') && visitedPages.includes('factorsDomestic') && visitedPages.includes('factorsInternational'));
   }
   return false;
 }

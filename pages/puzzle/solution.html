@@ -19,23 +19,33 @@
 <info>
    <h1 class="info-header">We set out on this journey to solve the puzzle:</h1>
     <content>
-        <br>Why are some countries rich and others poor?
+        <span class="important-text">Why are some countries rich and others poor?</span>
 
-        <br>Thanks for your time! But, do you think you know the solution? Go ahead and put your skills to the test!
-
+        <br>Thanks for your time! Think you've learned everything you need to know? Go ahead and put your skills to the test!
         <div id="chatbox">
+            <br>
             <div id="chat-area">
-                <div class="message bot-message">Hello! Ready to test your knowledge?</div>
+                <div class="sender">
+                    <span class="material-icons">person</span>
+                    <p id="sender-name">Not Professor Gilbert</p></div>
             </div>
-            <input type="text" id="user-input" placeholder="Type your answer here...">
-            <button id="send-span class=" button"">Send</button>
+            <div id="chat-inputs">
+            <input type="text" id="user-input" placeholder="Your answer">
+            <button id="answer-button">Answer</button></div>
         </div>
-
-        <a href="/pages/">Home</a>
-
-        <script src="/src/main.js"></script>
+        <div id="score">
+        </div>
+        <br><div style="display: flex; justify-content: center;">
+            <button onclick="window.location.href='/pages/'";>Home</button>
+        </div>
     </content>
 </info>
+<script type="module">
+    import { quizBot } from '/src/main.js';
+    document.addEventListener('DOMContentLoaded', () => {
+        quizBot();
+    });
+</script>
 <div id="footer"></div>
 <script>
     fetch('/footer.html')
