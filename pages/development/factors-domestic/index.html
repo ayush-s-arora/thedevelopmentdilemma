@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="/style.css">
     <script type="module" src="/src/main.js"></script>
 </head>
-
-<body>
     <div id="header"></div>
     <script>
         fetch('/header.html')
@@ -18,9 +16,10 @@
                 document.getElementById('header').innerHTML = data;
             });
     </script>
-    <script type="module">
+    <!-- <script type="module">
         import '/node_modules/transition-style/';
-    </script>
+    </script> -->
+    <body>
     <div transition-style="in:wipe:up">
         <info>
             <div>
@@ -149,6 +148,11 @@
         .then(data => {
             document.getElementById('footer').innerHTML = data;
         });
-</script>
-
+        </script>
+           <script type="module">
+            import { addVisitedPage } from '/src/main.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            addVisitedPage('factorsDomestic');
+        });
+    </script>
 </html>

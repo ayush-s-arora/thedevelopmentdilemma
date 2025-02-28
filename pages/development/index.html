@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +15,6 @@
             document.getElementById('header').innerHTML = data;
         });
 </script>
-
 <body>
     <div transition-style="in:wipe:up">
         <info>
@@ -36,33 +34,46 @@
                         data-text="Why are some countries rich and others poor?">puzzle</span>, poorer countries tend to
                     have:
                     <ul class="expandable-list">
-                        <li class="expandable-list-item">Less material wealth and income</li>
-                        <\would be nice to fade this in somehow on hover or change up>
+                        <li class="expandable-list-tab">
+                        <div class="expandable-list-item">Less material wealth and income
+                        <span class="material-icons">keyboard_arrow_down</span></div>
                             <ul class="expandable-list-content">
                                 <li>Between two nations, people in the less developed one tend to make less money from
                                     their employment and own less expensive goods.</li>
                             </ul>
-                            <li class="expandable-list-item">Less equitable distribution of wealth</li>
+                            <li class="expandable-list-tab">
+                            <div class="expandable-list-item">Less equitable distribution of wealth
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </div>
                             <ul class="expandable-list-content">
                                 <li>Between two nations, the less developed one tends to have a smaller proprtion of
                                     people making much more money than the rest of the population (commonly referred to
                                     as the "1%" or "elite").</li>
                             </ul>
-                            <li class="expandable-list-item">Continued migration from rural to urban areas</li>
+                            <li class="expandable-list-tab">
+                            <div class="expandable-list-item">Continued migration from rural to urban areas
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </div>
                             <ul class="expandable-list-content">
                                 <li>Between two nations, the less developed one tends to have more people moving to
                                     cities from smaller towns or villages since there are opportunities to earn more and
                                     receive better access to critical services—like education and healthcare—in the
                                     cities.</li>
                             </ul>
-                            <li class="expandable-list-item">Lack of domestic investment in services and infrastructure</li>
+                            <li class="expandable-list-tab">
+                            <div class="expandable-list-item">Lack of domestic investment in services and infrastructure
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </div>
                             <ul class="expandable-list-content">
                                 <li>Between two nations, the less developed one tends to not have as much government
                                     money spent on the essentials, such as education, healthcare, and transport.
                                     Following the previous bullet point's logic, the expenditures tend to go toward
                                     cities first, explaining better access to critical services in these areas.</li>
                             </ul>
-                            <li class="expandable-list-item">Often, a younger and rapidly growing population</li>
+                            <li class="expandable-list-tab">
+                            <div class="expandable-list-item">Often, a younger and rapidly growing population
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </div>
                             <ul class="expandable-list-content">
                                 <li>Reduced access to family planning resources, in conjunction with lower life
                                     expectancies, results in a population that tends to be younger and grow quickly.
@@ -72,21 +83,17 @@
 
                     From now on, we will be adding terms to our <b><a href="/pages/glossary">glossary</a></b>. You can
                     access it at anytime from the header. So, let's add our first term!
-                    <br><b>Less developed countries (LDCs)</b>: countries at a relatively low level of economic
+                    <br><b>&emsp;Less developed countries (LDCs)</b>: countries at a relatively low level of economic
                     development</br>
 
-                    <br><br><br>Quiz 1: Which of the following is NOT a characteristic of LCDs? <b>not sure if i wanna
-                        do this</b>
-
-
-                    <br>Next, let's talk about <b>factors affecting development</b>.</br>
-                    <button onclick="window.location.href='factors-domestic/';">Domestic Factors</a></span
+                    <br>Next, let's talk about <b>factors affecting development.</b> Make sure to complete these modules and then come back to this page!
+                    <br><br><button onclick="window.location.href='factors-domestic/';">Domestic Factors</a></span
                             class="button">
                         <button onclick="window.location.href='factors-international/';">International
                             Factors</a></button>
 
-                        <br><br>Have you finished those modules? If so, let's check your understanding!
-                        <span class="emoji"><a href='/pages/puzzle/solution'>💡</a></span>
+                        <span class="puzzle-solve"><br><br>It looks like you've finished those modules! Let's check your understanding!
+                        <span class="emoji"><a href='/pages/puzzle/solution'>💡</a></span></span>
                 </content>
             </div>
         </info>
@@ -99,5 +106,17 @@
             document.getElementById('footer').innerHTML = data;
         });
 </script>
-
+<script type="module">
+    import { addVisitedPage, unlockPuzzleSolve } from '/src/main.js';
+    document.addEventListener('DOMContentLoaded', () => {
+        addVisitedPage('development');
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+       if (unlockPuzzleSolve()) {
+        document.querySelector('.puzzle-solve').style.display = "block"
+       } else {
+        document.querySelector('.puzzle-solve').style.display = "none"
+       }
+    });
+</script>
 </html>

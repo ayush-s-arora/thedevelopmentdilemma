@@ -1,4 +1,5 @@
 @import "/node_modules/transition-style/";
+@import "/node_modules/material-icons/iconfont/filled.css";
 
 #chatbox {
   width: 300px;
@@ -343,10 +344,55 @@ info {
   transform: translateY(20%);
   transition: all .3s ease-in-out;
   font-size: xx-small;
+  visibility: hidden;
 }
 
 .tooltip:hover::before {
   opacity: 1;
   transform: translateX(-50%) translateY(0%);
+  visibility: visible;
   /* Slide up to original position */
+}
+
+/*https://codepen.io/Joy-Gohel-the-solid/pen/ZYEpZeo*/
+.expandable-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.expandable-list-tab {
+  border-bottom: 1px dashed #d3d3d3;
+}
+
+.expandable-list-item {
+  padding: 20px 0;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  .material-icons {
+    font-size: 24px;
+    margin-left: auto;
+    transition: transform 0.4s ease;
+  }
+}
+
+.expandable-list-tab.active .expandable-list-item .material-icons {
+  transform: rotate(180deg);
+}
+
+.expandable-list-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  padding-left: 20px;
+}
+
+.expandable-list-content li {
+  padding: 10px 0;
+  font-size: 16px;
+  line-height: 24px;
 }
