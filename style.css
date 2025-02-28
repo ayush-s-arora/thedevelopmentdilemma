@@ -1,33 +1,135 @@
 @import "/node_modules/transition-style/";
 
 #chatbox {
-    width: 300px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 20px;
+  width: 300px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 20px;
+}
+
+#chat-area {
+  height: 200px;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+}
+
+.message {
+  padding: 5px;
+  margin: 5px 0;
+}
+
+.bot-message {
+  background-color: #f0f0f0;
+}
+
+.user-message {
+  background-color: #c0f0f0;
+  text-align: right;
+}
+
+input {
+  width: 70%;
+}
+
+button {
+  position: relative;
+  width: 20%;
+  height: 50px;
+  border-radius: 10px;
+  background-color: black; 
+  color: white;
+  font-family: inherit;
+  font-size: large;
+}
+
+/*https://codepen.io/MysticZA/pen/zYNbzrN*/
+button:before {
+  content: "";
+  background: linear-gradient(90deg,
+      #2b1de8,
+      #dd00f3,
+      #2b1de8);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 200%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(50% + 4px);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+button:after {
+  content: "";
+  background: linear-gradient(90deg,
+  #2b1de8,
+  #dd00f3,
+  #2b1de8);
+  position: absolute;
+  top: calc(50% - 2px);
+  left: -2px;
+  background-size: 200%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(50% + 4px);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+button:hover:before {
+  opacity: 1;
+  animation: glowing 3s linear infinite;
+}
+
+button:hover:after {
+  opacity: 1;
+  animation: glowing-reverse 3s linear infinite;
+}
+
+button:not(:hover):before,
+button:not(:hover):after {
+  animation: none;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
   }
-  #chat-area {
-    height: 200px;
-    overflow-y: scroll;
-    margin-bottom: 10px;
+
+  100% {
+    background-position: 400% 0;
   }
-  .message {
-    padding: 5px;
-    margin: 5px 0;
+}
+
+@keyframes glowing-reverse {
+  0% {
+    background-position: 400% 0;
   }
-  .bot-message {
-    background-color: #f0f0f0;
+
+  100% {
+    background-position: 0 0;
   }
-  .user-message {
-    background-color: #c0f0f0;
-    text-align: right;
-  }
-  input {
-    width: 70%;
-  }
-  button {
-    width: 25%;
-  }  
+}
+
+.button-reveal.clicked button {
+  visibility: hidden;
+}
+
+.button-reveal .underlying-text {
+  visibility: hidden;
+}
+
+.button-reveal.clicked .underlying-text {
+  visibility: visible;
+}
+
 body {
   background-image: radial-gradient(rgb(45, 44, 44), rgb(7, 7, 7));
   font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
@@ -36,7 +138,10 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+
 intro {
   animation: fadein 3s;
   margin: auto;
@@ -49,6 +154,7 @@ intro {
   justify-content: center;
   font-size: x-large;
   display: flex;
+
   .emoji {
     height: 5px;
     border-radius: 100px;
@@ -60,19 +166,22 @@ intro {
   from {
     box-shadow: 0 0 1px -5px #aef4af;
   }
+
   to {
     box-shadow: 0 0 1px 5px #aef4af;
   }
 }
 
 @keyframes fadein {
-from {
-    opacity:0;
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
-to {
-    opacity:1;
-}
-}
+
 header {
   padding: 15px;
   text-align: right;
@@ -83,23 +192,26 @@ header {
   align-items: right;
   justify-content: right;
   display: flex;
+
   a {
     text-decoration: none;
     color: lightgray;
     display: inline-block;
   }
-  p {
+
+  p, .dropdown {
     margin: 0 20px;
+    position: relative;
+    display: inline-block;
+  
   }
+
   a:hover {
     color: #fff;
     transition: color 0.3s ease;
   }
 }
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -107,7 +219,7 @@ header {
   width: inherit;
   text-align: center;
   font-size: medium;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 5px;
   z-index: 1;
   overflow: visible;
@@ -119,22 +231,28 @@ header {
 }
 
 .dropdown-content a:hover {
-  background-color: #3e3e3e
+  background-color: #3e3e3e;
 }
 
 footer {
   font-size: x-small;
   text-align: right;
 }
+
 .emoji {
   a {
     text-decoration: none;
+    font-size: 65px;
+    display: block;
+    text-align: center;
   }
 }
+
 #particles-js {
   width: 100%;
   height: 100%;
 }
+
 info {
   display: flex;
   flex-direction: column;
@@ -143,12 +261,13 @@ info {
   a {
     text-decoration: underline dotted white;
     color: lightgray;
-    display: inline-block;
   }
+
   a:hover {
     color: #928e8e;
     transition: color 0.3s ease;
   }
+
   h1 {
     font-size: 7vh;
     display: flex;
@@ -156,21 +275,63 @@ info {
     justify-content: center;
     margin-top: 5vh;
   }
+
   content {
     display: inline-block;
     max-width: 65vw;
     line-height: 1.6;
     justify-content: center;
   }
+  
+  .info-header {
+    text-align: center;
+  }
 }
-tooltip {
+
+.important-text {
+  text-align: center;
+  align-items: center;
+  justify-content: center !important;
+  font-size: 35px;
+  display: block;
+}
+
+/*https://codepen.io/denic/details/GRoOxbM*/
+/* typed {
+  width: 22ch;
+  animation: typing 1.5s steps(23), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  /* font-family: monospace; */
+/* font-size: 2em; */
+/* }
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+    
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+} */
+
+/*https://codepen.io/t_herper/pen/YPKBYQv*/
+
+/*https://codepen.io/kazmi066/pen/JoPJgzd*/
+.tooltip {
   text-decoration: underline dotted white;
-    color: lightgray;
+  color: lightgray;
+  position: relative;
 }
-tooltip::before {
-  content: attr(hover-text);
+
+.tooltip::before {
+  content: attr(data-text);
   position: absolute;
-  background-color: #8249c4;
+  background-color: #000000;
   width: fit-content;
   color: #fbf9fd;
   padding: 0.4rem 1rem;
@@ -181,9 +342,11 @@ tooltip::before {
   opacity: 0;
   transform: translateY(20%);
   transition: all .3s ease-in-out;
+  font-size: xx-small;
 }
 
-tooltip:hover::before {
+.tooltip:hover::before {
   opacity: 1;
-  transform: translateX(-50%) translateY(0%); /* Slide up to original position */
+  transform: translateX(-50%) translateY(0%);
+  /* Slide up to original position */
 }

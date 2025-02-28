@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,24 +8,43 @@
     <link rel="stylesheet" href="/style.css">
     <script type="module" src="/src/main.js"></script>
 </head>
-<div id="header"></div>
-<script>
-    fetch('/header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header').innerHTML = data;
-        });
-</script>
-So, you're here to learn about <b>development</b> in international relations.
-<br>Let's start with the basics.</br>
-<br>
-<br>The field of international relations is all about exploring and solving <i>puzzles</i>: taking situations and attempting to explain them with theories and historical precedent.</br>
 
-<button>Got it</button>
-
-<\click to replace got it with the following text>Good. Now, let's talk about our puzzle regarding development:
-<br><\click to reveal> Why are some countries rich and others poor?</br>
-<\ an arrow that redirects to the main page>
+<body>
+    <div id="header"></div>
+    <script>
+        fetch('/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+    </script>
+    <info>
+        <h2 class="info-header">So, you're here to learn about <b>development</b> in international relations.</h2>
+        <content>
+            <br>Let's start with the basics.
+            <br>
+            <br>The field of international relations is all about exploring and solving <i>puzzles</i>—taking situations
+            and attempting to explain them with theories and historical precedent. Got it?</br>
+            <br>
+            <span class="button-reveal">
+                <button id="gotItButton">Got it.</button>
+                <span class="underlying-text">Good. Now, let's talk about our puzzle regarding
+                    development:<br><span class="important-text">Why are some countries rich and others poor?</span></span>
+                    <span class="underlying-text emoji"><a href="/pages/development/">🧩</a></span>
+            </span>
+            <script>
+                const gotItButton = document.getElementById('gotItButton');
+                const buttonContainer = document.querySelector('.button-reveal');
+                gotItButton.addEventListener('click', () => {
+                    buttonContainer.classList.add('clicked');
+                    gotItButton.style.pointerEvents = "none"
+                    gotItButton.style.display = "none"
+                })
+            </script>
+            
+</body>
+</content>
+</info>
 <div id="footer"></div>
 <script>
     fetch('/footer.html')

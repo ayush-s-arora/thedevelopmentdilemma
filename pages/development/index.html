@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,52 +15,89 @@
         .then(data => {
             document.getElementById('header').innerHTML = data;
         });
-</script><body>
+</script>
+
+<body>
     <div transition-style="in:wipe:up">
         <info>
-        <div>
-        <h1>Development</h1>
-    </div>
-    <div>
-        <content>
-            <h2>
-        Google's Dictionary defines development as <a href="https://www.google.com/search?q=development+definition", target="_blank">"a specified state of growth or advancement."</a>
+            <div>
+                <h1 class="info-header">Development</h1>
+            </div>
+            <div>
+                <content>
+                    <h3>
+                        Google's Dictionary defines development as <a
+                            href="https://www.google.com/search?q=development+definition" , target="_blank">"a specified
+                            state of growth or advancement."</a>
 
-        <br>But what does that mean for international relations?</br>
-    </h2>
-        Well, coming back to our <tooltip hover-text="Why are some countries rich and others poor?">puzzle</tooltip>, poorer countries tend to have:
-        <ul>
-        <li>Less material wealth and income</li>
-        <\would be nice to fade this in somehow on hover or change up><ul><li>Between two nations, people in the less developed one tend to make less money from their employment and own less expensive goods.</li></ul>
-        <li>Less equitable distribution of wealth</li>
-        <ul><li>Between two nations, the less developed one tends to have a smaller proprtion of people making much more money than the rest of the population (commonly referred to as the "1%" or "elite").</li></ul>
-        <li>Continued migration from rural to urban areas</li><ul><li>Between two nations, the less developed one tends to have more people moving to cities from smaller towns or villages since there are opportunities to earn more and receive better access to critical services—like education and healthcare—in the cities.</li></ul>
-        <li>Lack of domestic investment in services and infrastructure</li><ul><li>Between two nations, the less developed one tends to not have as much government money spent on the essentials, such as education, healthcare, and transport. Following the previous bullet point's logic, the expenditures tend to go toward cities first, explaining better access to critical services in these areas.</li></ul>
-        <li>Often, a younger and rapidly growing population</li><ul><li>Reduced access to family planning resources, in conjunction with lower life expectancies, results in a population that tends to be younger and grow quickly.</li></ul>
-        </ul>
+                        <br>But what does that mean for international relations?</br>
+                    </h3>
+                    Well, coming back to our <span class="tooltip"
+                        data-text="Why are some countries rich and others poor?">puzzle</span>, poorer countries tend to
+                    have:
+                    <ul class="expandable-list">
+                        <li class="expandable-list-item">Less material wealth and income</li>
+                        <\would be nice to fade this in somehow on hover or change up>
+                            <ul class="expandable-list-content">
+                                <li>Between two nations, people in the less developed one tend to make less money from
+                                    their employment and own less expensive goods.</li>
+                            </ul>
+                            <li class="expandable-list-item">Less equitable distribution of wealth</li>
+                            <ul class="expandable-list-content">
+                                <li>Between two nations, the less developed one tends to have a smaller proprtion of
+                                    people making much more money than the rest of the population (commonly referred to
+                                    as the "1%" or "elite").</li>
+                            </ul>
+                            <li class="expandable-list-item">Continued migration from rural to urban areas</li>
+                            <ul class="expandable-list-content">
+                                <li>Between two nations, the less developed one tends to have more people moving to
+                                    cities from smaller towns or villages since there are opportunities to earn more and
+                                    receive better access to critical services—like education and healthcare—in the
+                                    cities.</li>
+                            </ul>
+                            <li class="expandable-list-item">Lack of domestic investment in services and infrastructure</li>
+                            <ul class="expandable-list-content">
+                                <li>Between two nations, the less developed one tends to not have as much government
+                                    money spent on the essentials, such as education, healthcare, and transport.
+                                    Following the previous bullet point's logic, the expenditures tend to go toward
+                                    cities first, explaining better access to critical services in these areas.</li>
+                            </ul>
+                            <li class="expandable-list-item">Often, a younger and rapidly growing population</li>
+                            <ul class="expandable-list-content">
+                                <li>Reduced access to family planning resources, in conjunction with lower life
+                                    expectancies, results in a population that tends to be younger and grow quickly.
+                                </li>
+                            </ul>
+                    </ul>
 
-        From now on, we will be adding terms to our <b><a href="/pages/glossary">glossary</a></b>. You can access it at anytime from the header. So, let's add our first term!
-        <br><b>Less developed countries (LDCs)</b>: countries at a relatively low level of economic development</br>
+                    From now on, we will be adding terms to our <b><a href="/pages/glossary">glossary</a></b>. You can
+                    access it at anytime from the header. So, let's add our first term!
+                    <br><b>Less developed countries (LDCs)</b>: countries at a relatively low level of economic
+                    development</br>
 
-        <br><br><br>Quiz 1: Which of the following is NOT a characteristic of LCDs? <b>not sure if i wanna do this</b>
+                    <br><br><br>Quiz 1: Which of the following is NOT a characteristic of LCDs? <b>not sure if i wanna
+                        do this</b>
 
 
-        <br>Next, let's talk about <b>factors affecting development</b>.</br>
-        <button onclick="window.location.href='factors-domestic/';">Domestic Factors</a></button>
-        <button onclick="window.location.href='factors-international/';">International Factors</a></button>
+                    <br>Next, let's talk about <b>factors affecting development</b>.</br>
+                    <button onclick="window.location.href='factors-domestic/';">Domestic Factors</a></span
+                            class="button">
+                        <button onclick="window.location.href='factors-international/';">International
+                            Factors</a></button>
 
-        <br><br>Have you finished those modules? If so, let's check your understanding! 
-        <span class="emoji"><a href='/pages/puzzle/solution'>💡</a></span>
-        </content>
-        </div>
-    </info>
-    </body>
-    <div id="footer"></div>
-    <script>
-        fetch('/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer').innerHTML = data;
-            });
-    </script>
+                        <br><br>Have you finished those modules? If so, let's check your understanding!
+                        <span class="emoji"><a href='/pages/puzzle/solution'>💡</a></span>
+                </content>
+            </div>
+        </info>
+</body>
+<div id="footer"></div>
+<script>
+    fetch('/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+</script>
+
 </html>
