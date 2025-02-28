@@ -529,3 +529,18 @@ input[type=text] {
   margin: 8px 0;
   box-sizing: border-box;
 }
+
+.letter-navigation {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.letter-navigation a {
+  padding: 6px;
+}
+
+.letter-navigation a:not(.exists) {
+  color: #423d3d;
+  pointer-events: none;
+}

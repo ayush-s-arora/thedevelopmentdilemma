@@ -127,15 +127,19 @@ export function quizBot() {
 }
 
 // Info Tabs
-const infoTabs = document.querySelectorAll('.expandable-list-tab');
-infoTabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    tab.classList.toggle("active");
-    const infoBody = tab.querySelector('.expandable-list-content');
-    if (tab.classList.contains("active")) {
-      infoBody.style.maxHeight = infoBody.scrollHeight + "px";
-    } else {
-      infoBody.style.maxHeight = 0;
+const infoItems = document.querySelectorAll('.expandable-list-item');
+
+infoItems.forEach((item) => {
+  item.addEventListener("click", (event) => {
+    const tab = item.closest('.expandable-list-tab');
+    if (tab) {
+      tab.classList.toggle("active");
+      const infoBody = tab.querySelector('.expandable-list-content');
+      if (tab.classList.contains("active")) {
+        infoBody.style.maxHeight = infoBody.scrollHeight + "px";
+      } else {
+        infoBody.style.maxHeight = 0;
+      }
     }
   });
 });
@@ -163,3 +167,18 @@ export function unlockPuzzleSolve() {
   }
   return false;
 }
+
+const letterLinks = document.querySelectorAll('.letter-navigation a');
+
+letterLinks.forEach(link => {
+  const targetLetterId = link.getAttribute('href').substring(1);
+  const targetLetter = document.getElementById(targetLetterId);
+
+  if (targetLetter) { //to see if the letter exists in glossary
+    link.classList.add('exists'); 
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      targetLetter.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+});
