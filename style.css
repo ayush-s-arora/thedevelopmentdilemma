@@ -547,6 +547,7 @@ info {
 
 .puzzle-solve {
   text-align: center;
+  display: none; /*default value, overriden by specific JS conditions at bottom of Development HTML*/
 }
 
 ::-webkit-scrollbar {
