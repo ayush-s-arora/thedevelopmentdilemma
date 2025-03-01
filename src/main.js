@@ -4,7 +4,7 @@ export function quizBot() {
     { question: "Which of the following is NOT considered a domestic factor that directly affects development? Type the number that corresponds to your answer. (e.g., \"1\" without the quotation marks) \n1. Geography, 2. Infrastructure, 3. Inflation, 4. Rule of Law", answer: "3" },
     { question: "Which of the following is an explanation for the resource curse? \n1. Religion, 2. Corruption, 3. Illegal drug use, 4. International bargaining power", answer: "2" },
     { question: "Which set of industrialization policies tends to help nations develop more? \n1. EOI helps more than ISI, 2. ISI helps more than EOI", answer: "1" },
-    { question: "Which of the following usually occured in tropical colonies? \n1. Movement, 2. Extraction", answer: "2" },
+    { question: "Which of the following usually occurred in tropical colonies? \n1. Movement, 2. Extraction", answer: "2" },
     { question: "Which of the following most accurately describes the usual population of LDCs? \n1. Older, 2. Racially diverse, 3. Small, 4. Younger", answer: "4" },
     { question: "Mexico employed which of the following from the 1960s to the 1980s? \n1. Cooperative trade agreements , 2. High tariffs, 3. Non-state ownership of basic industries, 4. Export subsidies", answer: "2" },
     { question: "Which of the following is an example of an oligopoly? \n1. The agricultural market, 2. The stock market, 3. Street vendors, 4. The wireless carrier industry", answer: "4" },
@@ -148,7 +148,7 @@ infoItems.forEach((item) => {
   });
 });
 
-//Track visited pages
+// Track visited pages
 export function addVisitedPage(pageIdentifier) {
   let visitedPages = sessionStorage.getItem('visitedPages');
   if (visitedPages) {
@@ -178,7 +178,7 @@ letterLinks.forEach(link => {
   const targetLetterId = link.getAttribute('href').substring(1);
   const targetLetter = document.getElementById(targetLetterId);
 
-  if (targetLetter) { //to see if the letter exists in glossary
+  if (targetLetter) { // To see if the letter exists in glossary
     link.classList.add('exists');
     link.addEventListener('click', function (event) {
       event.preventDefault();
@@ -190,7 +190,7 @@ letterLinks.forEach(link => {
 document.addEventListener('DOMContentLoaded', () => {
   const currentPage = document.querySelector('.transition-page');
   if (currentPage) {
-    currentPage.classList.add('active'); // Fade in current page
+    currentPage.classList.add('active');
   }
 
   const links = document.querySelectorAll('a[href]');
@@ -203,10 +203,10 @@ document.addEventListener('DOMContentLoaded', () => {
       event.preventDefault();
 
       if (currentPage) {
-        currentPage.classList.add('out'); // Fade out current page
+        currentPage.classList.add('out');
         setTimeout(() => {
           window.location.href = href;
-        }, 400); // Match transition duration
+        }, 400);
       } else {
         window.location.href = href;
       }
@@ -220,16 +220,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (currentPage) {
     currentPage.classList.add('active');
-    overlay.classList.add('active'); // Fade in overlay
+    overlay.classList.add('active');
   }
 
   const links = document.querySelectorAll('a[href]');
   links.forEach(link => {
     link.addEventListener('click', (event) => {
-      // ... existing link click logic ...
       if (currentPage) {
         currentPage.classList.add('out');
-        overlay.classList.add('out'); // Fade out overlay
+        overlay.classList.add('out');
         setTimeout(() => {
           window.location.href = href;
         }, 400);
