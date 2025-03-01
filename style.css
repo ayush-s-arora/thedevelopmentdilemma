@@ -209,6 +209,14 @@ button:not(:hover):after {
   opacity: 1;
 }
 
+.underlying-text {
+  display: none;
+}
+
+.underlying-text.active {
+  display: inline;
+}
+
 html,
 body {
   background-image: radial-gradient(rgb(45, 44, 44), rgb(7, 7, 7));
