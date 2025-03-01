@@ -15,8 +15,8 @@
         <div id="particles-js"></div>
         <script src="../particles-config.js"></script>
         <div id="mobile-warning" style="display: none;">
-            <p>I appreciate your commitment to learning on the go, but this website was <b>not</b> designed for mobile
-                devices. Proceed at your own risk!</p>
+            <p>I appreciate your commitment to learning on the go, but this website is <b><i>not</i></b> optimized for
+                mobile devices. Proceed at your own risk!</p>
         </div>
         <div class="intro">
             <h1>The Development Dilemma
@@ -26,9 +26,21 @@
             </h1>
         </div>
         <footer>
-            <p>Developed by Ayush Shukla Arora for Northwestern Univeristy's Winter 2025 POLI_SCI 240</p>
+            <p>Developed by Ayush Shukla Arora for Northwestern University's POLI_SCI 240, Winter 2025</p>
         </footer>
     </div>
 </body>
+<script>
+    function checkMobile() {
+        if (window.innerWidth <= 600) {
+            document.getElementById('mobile-warning').style.display = 'block';
+        } else {
+            document.getElementById('mobile-warning').style.display = 'none';
+        }
+    }
+
+    window.addEventListener('load', checkMobile);
+    window.addEventListener('resize', checkMobile);
+</script>
 
 </html>

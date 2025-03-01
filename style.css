@@ -29,6 +29,10 @@
 
 #chat-inputs {
   text-align: center;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 #score {
@@ -43,6 +47,10 @@
   align-items: center;
   gap: 5px;
   font-size: small;
+
+  .material-icons {
+    transform: translateY(-1.5px);
+  }
 }
 
 .message {
@@ -73,8 +81,27 @@
   transform: translateY(0);
 }
 
+/*https://uiverse.io/Jaareet/serious-lionfish-75*/
 input {
   width: 70%;
+  border-radius: 10px;
+  font-size: large;
+  color: #fff;
+  background-color: rgb(51, 51, 56);
+  box-shadow: 0 0 .4vw rgba(0, 0, 0, 0.5), 0 0 0 .15vw transparent;
+  border-radius: 0.4vw;
+  border: none;
+  outline: none;
+  padding: 0.4vw;
+  transition: .4s;
+}
+
+input:hover {
+  box-shadow: 0px 0px 16px 0px rgba(255, 255, 255, 0.2);
+}
+
+input:focus {
+  box-shadow: 0 0 0 .15vw white;
 }
 
 button {
@@ -165,6 +192,10 @@ button:not(:hover):after {
   }
 }
 
+.button-reveal {
+  text-align: center;
+}
+
 .button-reveal.clicked button {
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
@@ -253,7 +284,6 @@ header {
     margin: 0 20px;
     position: relative;
     display: inline-block;
-
   }
 
   a:hover {
@@ -316,7 +346,6 @@ footer {
   flex-shrink: 0;
 }
 
-
 .emoji {
   a {
     text-decoration: none;
@@ -331,6 +360,7 @@ info {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 15px;
 
   a {
     text-decoration: underline dotted white;
@@ -547,6 +577,8 @@ info {
 
 .puzzle-solve {
   text-align: center;
+  display: none;
+  /*default value, overridden by specific JS conditions at bottom of Development HTML*/
 }
 
 ::-webkit-scrollbar {
