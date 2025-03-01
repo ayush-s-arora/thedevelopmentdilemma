@@ -215,6 +215,7 @@ button:not(:hover):after {
 
 .underlying-text.active {
   display: inline;
+  transition: opacity 0.2s ease-in-out;
 }
 
 html,
