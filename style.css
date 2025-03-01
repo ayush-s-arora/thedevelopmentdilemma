@@ -209,15 +209,6 @@ button:not(:hover):after {
   opacity: 1;
 }
 
-.underlying-text {
-  display: none;
-}
-
-.underlying-text.active {
-  display: inline;
-  transition: opacity 0.2s ease-in-out;
-}
-
 html,
 body {
   background-image: radial-gradient(rgb(45, 44, 44), rgb(7, 7, 7));

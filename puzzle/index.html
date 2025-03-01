@@ -44,14 +44,10 @@
                 <script>
                     const gotItButton = document.getElementById('gotItButton');
                     const buttonContainer = document.querySelector('.button-reveal');
-                    const underlyingTexts = document.querySelectorAll('.underlying-text');
                     gotItButton.addEventListener('click', () => {
                         buttonContainer.classList.add('clicked');
                         gotItButton.style.pointerEvents = "none"
                         gotItButton.style.display = "none"
-                        underlyingTexts.forEach(text => {
-                            text.classList.add('active');
-                        });
                     })
                 </script>
 

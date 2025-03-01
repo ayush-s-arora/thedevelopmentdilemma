@@ -170,32 +170,25 @@
                     <script>
                         const revealButton = document.getElementById('reveal-button');
                         const buttonContainer = document.querySelector('.button-reveal');
-                        const underlyingTexts = document.querySelectorAll('.underlying-text');
                         revealButton.addEventListener('click', () => {
                             buttonContainer.classList.add('clicked');
                             revealButton.style.pointerEvents = "none"
                             revealButton.style.display = "none"
-                            underlyingTexts.forEach(text => {
-                                text.classList.add('active');
-                            });
                         })
                     </script>
                 </content>
             </div>
-            </script>
-            </content>
-    </div>
-    <button onclick="window.location.href='../'" ;>Back</button>
-    </info>
-    <footer>
-        <p>Developed by Ayush Shukla Arora for Northwestern University's POLI_SCI 240, Winter 2025</p>
-    </footer>
-    <script type="module">
-        import { addVisitedPage } from '../../src/main.js';
-        document.addEventListener('DOMContentLoaded', () => {
-            addVisitedPage('factorsInternational');
-        });
-    </script>
+            <button onclick="window.location.href='../'" ;>Back</button>
+        </info>
+        <footer>
+            <p>Developed by Ayush Shukla Arora for Northwestern University's POLI_SCI 240, Winter 2025</p>
+        </footer>
+        <script type="module">
+            import { addVisitedPage } from '../../src/main.js';
+            document.addEventListener('DOMContentLoaded', () => {
+                addVisitedPage('factorsInternational');
+            });
+        </script>
     </div>
 </body>
 
