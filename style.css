@@ -202,11 +202,13 @@ button:not(:hover):after {
 
 .button-reveal .underlying-text {
   opacity: 0;
+  visibility: hidden;
   transition: opacity 0.2s ease-in-out;
 }
 
 .button-reveal.clicked .underlying-text {
   opacity: 1;
+  visibility: visible;
 }
 
 html,
